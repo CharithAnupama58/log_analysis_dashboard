@@ -4,6 +4,18 @@ import pandas as pd
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 import os
+# add at top
+import streamlit as st, os
+from sqlalchemy import create_engine
+
+host = st.secrets.get("DB_HOST", os.getenv("DB_HOST"))
+port = st.secrets.get("DB_PORT", os.getenv("DB_PORT", "3306"))
+name = st.secrets.get("DB_NAME", os.getenv("DB_NAME"))
+user = st.secrets.get("DB_USER", os.getenv("DB_USER"))
+pw   = st.secrets.get("DB_PASS", os.getenv("DB_PASS"))
+
+URI = f"mysql+pymysql://{user}:{pw}@{host}:{port}/{name}"
+engine = create_engine(URI, pool_pre_ping=True)
 
 # Load DB credentials from .env
 load_dotenv()
