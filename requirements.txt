@@ -1,5 +1,7 @@
 streamlit
-sqlalchemy
-pymysql
-python-dotenv
+streamlit-autorefresh
 pandas
+requests
+# optional extras if you enabled wordcloud:
+# wordcloud
+# matplotlib
